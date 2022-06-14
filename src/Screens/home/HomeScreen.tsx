@@ -1,7 +1,7 @@
 import {View,Text,StyleSheet} from "react-native";
 import Colors from "../../constanst/Colors";
 
-const HomeScreen =({navigation})=>{
+const HomeScreen =({navigation}:{navigation:any})=>{
 return(
 <View style={styles.container}>
 <Text>HomeScreen</Text>

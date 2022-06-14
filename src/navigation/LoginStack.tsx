@@ -2,7 +2,7 @@ import {View,Text,StyleSheet} from "react-native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import LoginFirstScreen from "../Screens/login/LoginFirstScreen";
 const Stack = createNativeStackNavigator();
-const LoginStack =({navigation})=>{
+const LoginStack =({navigation}:{navigation:any})=>{
 return(
 <View style={styles.container}>
     <Stack.Navigator initialRouteName="login" >

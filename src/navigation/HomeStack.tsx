@@ -2,7 +2,7 @@ import {View,Text,StyleSheet} from "react-native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {HomeScreen} from "../Screens";
 const Stack = createNativeStackNavigator();
-const HomeStack =({navigation})=>{
+const HomeStack =({navigation}:{navigation:any})=>{
 return(
     <View style={{flex:1}}>
         <Stack.Navigator initialRouteName="home" >
