@@ -1,6 +1,6 @@
 import {View,Text,StyleSheet} from "react-native";
 
-const LoginFirstScreen =({navigation})=>{
+const LoginFirstScreen =({navigation}:{navigation:any})=>{
 return(
 <View style={styles.container}>
 <Text>LoginFirstScreen</Text>
