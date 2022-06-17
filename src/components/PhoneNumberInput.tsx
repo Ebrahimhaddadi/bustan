@@ -6,10 +6,7 @@ import CountryCodeButton from "./CountryCodeButton";
 
 const PhoneNumberInput = () => {
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={() => console.log("Clicked")}
-    >
+    <TouchableOpacity style={styles.container}>
       <CountryCodeButton style={{ width: "30%" }} />
       <TextInput
         style={{ flex: 1 }}

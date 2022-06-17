@@ -3,8 +3,11 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
+  Keyboard,
+  KeyboardAvoidingView,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
 import Logo from "../../../assets/logo.svg";
 import Colors from "../../constanst/Colors";
@@ -12,28 +15,30 @@ import MyButton from "../../components/MyButton";
 
 const LoginSecondScreen = () => {
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior="height" style={styles.container}>
       <ImageBackground
         source={require("../../../assets/BG.png")}
         style={{ flex: 1, width: "100%", alignItems: "center" }}
       >
-        <Logo width={250} height={250} style={styles.logo} />
-        <View style={styles.verificationBox}>
-          <View style={styles.codeInfo}>
-            <Text style={styles.title}>Enter 4-digit code</Text>
-            <Text style={styles.resendText}>Resend code in 1:54</Text>
-            <TextInput style={styles.input} />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.verificationBox}>
+            <Logo width={250} height={250} style={styles.logo} />
+            <View style={styles.codeInfo}>
+              <Text style={styles.title}>Enter 4-digit code</Text>
+              <Text style={styles.resendText}>Resend code in 1:54</Text>
+              <TextInput style={styles.input} />
+            </View>
+            <View>
+              <Text style={styles.phoneNumber}>+98 911 234 5678</Text>
+              <TouchableOpacity style={styles.underline}>
+                <Text style={styles.wrong}>Wrong number?</Text>
+              </TouchableOpacity>
+            </View>
+            <MyButton title="Verify" />
           </View>
-          <View>
-            <Text style={styles.phoneNumber}>+98 911 234 5678</Text>
-            <TouchableOpacity style={styles.underline}>
-              <Text style={styles.wrong}>Wrong number?</Text>
-            </TouchableOpacity>
-          </View>
-          <MyButton title="Verify" />
-        </View>
+        </TouchableWithoutFeedback>
       </ImageBackground>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 export default LoginSecondScreen;
@@ -44,18 +49,18 @@ const styles = StyleSheet.create({
   },
   logo: {
     position: "absolute",
-    top: "17%",
+    top: "-51%",
     zIndex: 1,
   },
   verificationBox: {
     alignItems: "center",
     backgroundColor: Colors.perpule,
     borderRadius: 20,
-    height: "52%",
+    height: 400,
     justifyContent: "space-around",
     paddingTop: "27%",
     top: "35%",
-    width: "85%",
+    width: "95%",
   },
   codeInfo: {
     alignItems: "center",

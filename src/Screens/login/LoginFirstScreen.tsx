@@ -1,33 +1,46 @@
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import {
+  ImageBackground,
+  Keyboard,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 
-import Logo from "../../../assets/logo.svg";
 import Colors from "../../constanst/Colors";
+import Logo from "../../../assets/logo.svg";
 import MyButton from "../../components/MyButton";
 import PhoneNumberInput from "../../components/PhoneNumberInput";
 
 const LoginFirstScreen = () => {
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior="height" style={styles.container}>
       <ImageBackground
         source={require("../../../assets/BG.png")}
-        style={{ flex: 1, width: "100%", alignItems: "center" }}
+        style={{
+          flex: 1,
+          alignItems: "center",
+        }}
       >
-        <Logo width={250} height={250} style={styles.logo} />
-        <View style={styles.loginContainer}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Please enter your phone number</Text>
-            <Text style={styles.subtitle}>
-              The activation code will be sent to you via SMS
-            </Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.loginContainer}>
+            <Logo width={250} height={250} style={styles.logo} />
+            <View style={styles.titleContainer}>
+              <Text style={styles.title}>Please enter your phone number</Text>
+              <Text style={styles.subtitle}>
+                The activation code will be sent to you via SMS
+              </Text>
+            </View>
+            <PhoneNumberInput />
+            <MyButton
+              title="Request code"
+              onPress={() => console.log("Clicked")}
+            />
           </View>
-          <PhoneNumberInput />
-          <MyButton
-            title="Request code"
-            onPress={() => console.log("Clicked")}
-          />
-        </View>
+        </TouchableWithoutFeedback>
       </ImageBackground>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 export default LoginFirstScreen;
@@ -38,18 +51,18 @@ const styles = StyleSheet.create({
   },
   logo: {
     position: "absolute",
-    top: "17%",
+    top: "-51%",
     zIndex: 1,
   },
   loginContainer: {
     alignItems: "center",
     backgroundColor: Colors.perpule,
     borderRadius: 20,
-    height: "52%",
+    height: 400,
+    width: "95%",
     justifyContent: "space-around",
     paddingTop: "27%",
     top: "35%",
-    width: "95%",
   },
   titleContainer: {
     alignItems: "center",
