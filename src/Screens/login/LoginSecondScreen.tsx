@@ -1,11 +1,16 @@
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
-
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import Logo from "../../../assets/logo.svg";
 import Colors from "../../constanst/Colors";
 import MyButton from "../../components/MyButton";
-import PhoneNumberInput from "../../components/PhoneNumberInput";
 
-const LoginFirstScreen = () => {
+const LoginSecondScreen = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -13,24 +18,25 @@ const LoginFirstScreen = () => {
         style={{ flex: 1, width: "100%", alignItems: "center" }}
       >
         <Logo width={250} height={250} style={styles.logo} />
-        <View style={styles.loginContainer}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Please enter your phone number</Text>
-            <Text style={styles.subtitle}>
-              The activation code will be sent to you via SMS
-            </Text>
+        <View style={styles.verificationBox}>
+          <View style={styles.codeInfo}>
+            <Text style={styles.title}>Enter 4-digit code</Text>
+            <Text style={styles.resendText}>Resend code in 1:54</Text>
+            <TextInput style={styles.input} />
           </View>
-          <PhoneNumberInput />
-          <MyButton
-            title="Request code"
-            onPress={() => console.log("Clicked")}
-          />
+          <View>
+            <Text style={styles.phoneNumber}>+98 911 234 5678</Text>
+            <TouchableOpacity style={styles.underline}>
+              <Text style={styles.wrong}>Wrong number?</Text>
+            </TouchableOpacity>
+          </View>
+          <MyButton title="Verify" />
         </View>
       </ImageBackground>
     </View>
   );
 };
-export default LoginFirstScreen;
+export default LoginSecondScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +47,7 @@ const styles = StyleSheet.create({
     top: "17%",
     zIndex: 1,
   },
-  loginContainer: {
+  verificationBox: {
     alignItems: "center",
     backgroundColor: Colors.perpule,
     borderRadius: 20,
@@ -49,22 +55,28 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     paddingTop: "27%",
     top: "35%",
-    width: "95%",
+    width: "85%",
   },
-  titleContainer: {
+  codeInfo: {
     alignItems: "center",
-    height: "18%",
+    height: "40%",
     justifyContent: "space-between",
+    width: "100%",
   },
   title: {
     color: Colors.white,
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: "500",
   },
-  subtitle: {
+  resendText: {
     color: Colors.whitesmoke,
-    fontSize: 12,
   },
   input: {
+    borderColor: Colors.white,
+    borderRadius: 10,
+    borderWidth: 1,
+    height: 40,
+    padding: 10,
     width: "50%",
   },
   phoneNumber: {
